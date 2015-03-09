@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Calvin Nisbet. All rights reserved.
 //
 
+
 #import "PhotoViewController.h"
 #import "PhotoCell.h"
+#import "DetailViewController.h"
 #import <SimpleAuth/SimpleAuth.h>
 
 
@@ -83,6 +85,17 @@
     cell.backgroundColor = [UIColor redColor];
     cell.photo = self.photos[indexPath.row];
     return cell;
+}
+
+
+
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *photo = self.photos[indexPath.row];
+    DetailViewController *viewController = [[DetailViewController alloc] init];
+    viewController.photo = photo;
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 @end

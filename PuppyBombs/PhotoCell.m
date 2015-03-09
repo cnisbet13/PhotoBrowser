@@ -7,7 +7,7 @@
 //
 
 #import "PhotoCell.h"
-#import <SAMCache/SAMCache.h>
+#import "PhotoController.h"
 
 @implementation PhotoCell
 
@@ -15,8 +15,9 @@
 -(void)setPhoto:(NSDictionary *)photo
 {
     _photo = photo;
-    NSURL *url = [[NSURL alloc] initWithString:_photo[@"images"][@"thumbnail"][@"url"]];
-    [self downloadPhotoWithURL:url];
+   [PhotoController imageForPhoto:photo size:@"thumbnail" completion:^(UIImage *image) {
+       self.imageView.image = image;
+   }];
     
 }
 
@@ -43,30 +44,10 @@
 }
 
 
--(void)downloadPhotoWithURL:(NSURL*)url
-{
-    NSString *key = [[NSString alloc] initWithFormat:@"%@-thumbnail", self.photo[@"id"]];
-    UIImage *photo = [[SAMCache sharedCache] imageForKey:key];
-    if (photo) {
-        self.imageView.image = photo;
-        return;
-    }
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        NSData *data = [[NSData alloc] initWithContentsOfURL:url];
-        UIImage *image = [[UIImage alloc] initWithData:data];
-        [[SAMCache sharedCache] setImage:image forKey:key];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.imageView.image = image;
-        });
-    }];
-    [downloadTask resume];
-}
-
 - (void)like
 {
+    
+    NSLog(@"Link: %@", self.photo[@"link"]);
     NSURLSession *session = [NSURLSession sharedSession];
     NSString *accessToken = [[NSUserDefaults  standardUserDefaults] objectForKey:@"accessToken"];
     NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", self.photo[@"id"], accessToken];
