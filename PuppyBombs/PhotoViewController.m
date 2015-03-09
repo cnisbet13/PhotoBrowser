@@ -27,7 +27,14 @@
     [self.collectionView registerClass:[PhotoCell class] forCellWithReuseIdentifier:@"Photo"];
     self.title = @"Puppy Bombs";
     
-    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURL *url = [[NSURL alloc] initWithString:@"http://www.gatorzone.com/"];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        NSString *text = [NSString stringWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@"%@", text);
+    }];
+    [task resume];
 }
 
 

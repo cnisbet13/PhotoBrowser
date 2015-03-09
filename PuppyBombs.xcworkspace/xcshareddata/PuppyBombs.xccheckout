@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A4F4B5FA-8852-45F0-BD14-EAAA6D60912D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PuppyBombs</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>167E4D008DB4D2C038EA9FB330A1514A3A7E7BC0</key>
+		<string>https://github.com/cnisbet13/PhotoBrowser.git</string>
+		<key>8F41B4E3B45357F56988EF89B83EB7E9F4DBA817</key>
+		<string>https://github.com/cnisb044/Bill-Splitter.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PuppyBombs.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>167E4D008DB4D2C038EA9FB330A1514A3A7E7BC0</key>
+		<string>..</string>
+		<key>8F41B4E3B45357F56988EF89B83EB7E9F4DBA817</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/cnisbet13/PhotoBrowser.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>167E4D008DB4D2C038EA9FB330A1514A3A7E7BC0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8F41B4E3B45357F56988EF89B83EB7E9F4DBA817</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>167E4D008DB4D2C038EA9FB330A1514A3A7E7BC0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PuppyBombs</string>
+		</dict>
+	</array>
+</dict>
+</plist>
