@@ -8,8 +8,18 @@
 
 #import "PhotoViewController.h"
 #import "PhotoCell.h"
+#import <SimpleAuth/SimpleAuth.h>
+
+
+@interface PhotoViewController()
+
+@property (nonatomic) NSString *accessToken;
+@property (nonatomic) NSArray *photos;
+
+@end
 
 @implementation PhotoViewController
+
 
 
 - (instancetype)init
@@ -27,26 +37,50 @@
     [self.collectionView registerClass:[PhotoCell class] forCellWithReuseIdentifier:@"Photo"];
     self.title = @"Puppy Bombs";
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.accessToken = [userDefaults objectForKey:@"accessToken"];
+    
+    
+    if (self.accessToken == nil) {
+        [SimpleAuth authorize:@"instagram" completion:^(NSDictionary *responseObject, NSError *error) {
+            NSString *accessToken = responseObject[@"credentials"][@"token"];
+            [userDefaults setObject:accessToken forKey:@"accessToken"];
+            [userDefaults synchronize];
+        }];
+    } else {
+        [self refresh];
+    }
+}
+
+-(void)refresh
+{
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURL *url = [[NSURL alloc] initWithString:@"http://www.gatorzone.com/"];
+    NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/tags/nba/media/recent?access_token=%@", self.accessToken];
+    NSURL *url = [[NSURL alloc] initWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        NSString *text = [NSString stringWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
-        NSLog(@"%@", text);
+    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        NSData *data = [[NSData alloc] initWithContentsOfURL:location];
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        self.photos = [responseDictionary valueForKeyPath:@"data"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+        });
+        NSLog(@"%@", self.photos);
     }];
-    [task resume];
+    [downloadTask resume];
 }
 
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 12;
+    return [self.photos count];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Photo" forIndexPath:indexPath];
+    PhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Photo" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor redColor];
+    cell.photo = self.photos[indexPath.row];
     return cell;
 }
 

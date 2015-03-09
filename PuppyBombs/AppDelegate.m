@@ -21,6 +21,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    SimpleAuth.configuration[@"instagram"] = @{
+                                               @"client_id" : @"4b6578c24ee14b1ea70a0cdcc93260fc",
+                                               SimpleAuthRedirectURIKey : @"PuppyPhotoBombs://auth/Instagram"
+                                               };
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]bounds]];
     PhotoViewController *photosViewController = [[PhotoViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:photosViewController];
