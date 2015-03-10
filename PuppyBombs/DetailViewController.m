@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor blueColor];
+    self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.95];
     
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
     [self.view addSubview:self.imageView];
@@ -36,7 +36,16 @@
 }
 
 
-- (void)close{
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    CGSize size = self.view.bounds.size;
+    CGSize imageSize = CGSizeMake(size.width, size.width);
+    self.imageView.frame = CGRectMake(0.0, (size.height - imageSize.height)/2.0, imageSize.width, imageSize.height);
+}
+
+- (void)close
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
