@@ -19,6 +19,7 @@
 		965D13A21AAE556700B371CD /* PhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 965D13A11AAE556700B371CD /* PhotoController.m */; };
 		965D13A51AAE591300B371CD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 965D13A41AAE591300B371CD /* DetailViewController.m */; };
 		96EAE2941AAF988C00040E7D /* PresentDetailTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EAE2931AAF988C00040E7D /* PresentDetailTransition.m */; };
+		96EAE2971AAFA06100040E7D /* DismissDetailTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EAE2961AAFA06100040E7D /* DismissDetailTransition.m */; };
 		99EC6320E993E199212C3320 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBDC721241165BC5D3BD37E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,8 @@
 		965D13A41AAE591300B371CD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		96EAE2921AAF988C00040E7D /* PresentDetailTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentDetailTransition.h; sourceTree = "<group>"; };
 		96EAE2931AAF988C00040E7D /* PresentDetailTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentDetailTransition.m; sourceTree = "<group>"; };
+		96EAE2951AAFA06100040E7D /* DismissDetailTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DismissDetailTransition.h; sourceTree = "<group>"; };
+		96EAE2961AAFA06100040E7D /* DismissDetailTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DismissDetailTransition.m; sourceTree = "<group>"; };
 		9B6262ECC0A7288B0E6B6F44 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,8 +126,7 @@
 				965D13751AADBED600B371CD /* AppDelegate.h */,
 				965D13761AADBED600B371CD /* AppDelegate.m */,
 				965D137B1AADBED600B371CD /* Main.storyboard */,
-				96EAE2921AAF988C00040E7D /* PresentDetailTransition.h */,
-				96EAE2931AAF988C00040E7D /* PresentDetailTransition.m */,
+				96EAE2981AAFA06800040E7D /* Transition View controllers */,
 				965D13971AADBF0400B371CD /* PhotoViewController.h */,
 				965D13981AADBF0400B371CD /* PhotoViewController.m */,
 				965D139A1AADC44200B371CD /* PhotoCell.h */,
@@ -164,6 +166,17 @@
 				965D138C1AADBED600B371CD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		96EAE2981AAFA06800040E7D /* Transition View controllers */ = {
+			isa = PBXGroup;
+			children = (
+				96EAE2921AAF988C00040E7D /* PresentDetailTransition.h */,
+				96EAE2931AAF988C00040E7D /* PresentDetailTransition.m */,
+				96EAE2951AAFA06100040E7D /* DismissDetailTransition.h */,
+				96EAE2961AAFA06100040E7D /* DismissDetailTransition.m */,
+			);
+			name = "Transition View controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +321,7 @@
 				965D13741AADBED600B371CD /* main.m in Sources */,
 				96EAE2941AAF988C00040E7D /* PresentDetailTransition.m in Sources */,
 				965D13A21AAE556700B371CD /* PhotoController.m in Sources */,
+				96EAE2971AAFA06100040E7D /* DismissDetailTransition.m in Sources */,
 				965D13A51AAE591300B371CD /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
