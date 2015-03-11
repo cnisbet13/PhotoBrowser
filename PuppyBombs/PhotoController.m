@@ -19,12 +19,34 @@
         return;
     }
     NSString *key = [[NSString alloc] initWithFormat:@"%@-%@", photo[@"id"], size];
-    UIImage *image = [[SAMCache sharedCache] imageForKey:key];
     NSURL *url = [[NSURL alloc] initWithString:photo[@"images"][size][@"url"]];
+    [self downloadURL:url key:key completion:completion];
+    
+    
+    
+}
+
++ (void)avatarForPhoto:(NSDictionary *)photo completion:(void(^)(UIImage *image))completion {
+    if (photo == nil || completion == nil) {
+        return;
+    }
+    NSString *key = [[NSString alloc] initWithFormat:@"avatar-%@", photo[@"user"][@"id"]];
+    NSURL *url = [[NSURL alloc] initWithString:photo[@"user"][@"profile_picture"]];
+    [self downloadURL:url key:key completion:completion];
+}
+
+
++ (void)downloadURL:(NSURL *)url key:(NSString *)key completion:(void(^)(UIImage *image))completion {
+    UIImage *image = [[SAMCache sharedCache] imageForKey:key];
+    if (image) {
+        completion(image);
+        return;
+    }
+    
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        NSData *data = [[NSData alloc] initWithContentsOfURL:url];
+    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        NSData *data = [[NSData alloc] initWithContentsOfURL:location];
         UIImage *image = [[UIImage alloc] initWithData:data];
         [[SAMCache sharedCache] setImage:image forKey:key];
         
@@ -32,8 +54,7 @@
             completion(image);
         });
     }];
-    [downloadTask resume];
-    
+    [task resume];
 }
 
 

@@ -15,16 +15,22 @@
 #import "DismissDetailTransition.h"
 
 
+
 @interface PhotoViewController() <UIViewControllerTransitioningDelegate>
 
 @property (nonatomic) NSString *accessToken;
 @property (nonatomic) NSArray *photos;
+@property (nonatomic) BOOL loading;
 
 @end
 
 @implementation PhotoViewController
 
-
+- (void)setLoading:(BOOL)loading {
+    _loading = loading;
+    
+    self.navigationItem.rightBarButtonItem.enabled = !_loading;
+}
 
 - (instancetype)init
 {
@@ -37,9 +43,14 @@
 
 -(void)viewDidLoad
 {
+    self.title = @"Puppy Bombs";
+    // TODO: Add a refresh right bar button item
+    
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refresh)];
+    self.navigationItem.rightBarButtonItem = refreshButton;
+    
     self.collectionView.backgroundColor = [UIColor darkGrayColor];
     [self.collectionView registerClass:[PhotoCell class] forCellWithReuseIdentifier:@"Photo"];
-    self.title = @"Puppy Bombs";
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     self.accessToken = [userDefaults objectForKey:@"accessToken"];
@@ -59,6 +70,11 @@
 
 -(void)refresh
 {
+    if (self.loading) {
+        return;
+    }
+    self.loading = YES;
+    
     NSURLSession *session = [NSURLSession sharedSession];
     NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/tags/vancouver/media/recent?access_token=%@", self.accessToken];
     NSURL *url = [[NSURL alloc] initWithString:urlString];
@@ -69,6 +85,7 @@
         self.photos = [responseDictionary valueForKeyPath:@"data"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionView reloadData];
+            self.loading = NO;
         });
         NSLog(@"%@", self.photos);
     }];
@@ -88,9 +105,6 @@
     cell.photo = self.photos[indexPath.row];
     return cell;
 }
-
-
-
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
