@@ -21,6 +21,8 @@
 @property (nonatomic) NSString *accessToken;
 @property (nonatomic) NSArray *photos;
 @property (nonatomic) BOOL loading;
+@property (nonatomic) NSArray *hashtags;
+@property (nonatomic) NSArray *hashTags;
 
 @end
 
@@ -30,6 +32,10 @@
     _loading = loading;
     
     self.navigationItem.rightBarButtonItem.enabled = !_loading;
+    
+    self.hashTags = [NSArray arrayWithObject:@"grizzlyFlow"];
+    self.hashtags = [NSArray arrayWithArray:self.hashTags];
+    
 }
 
 - (instancetype)init
@@ -43,8 +49,13 @@
 
 -(void)viewDidLoad
 {
-    self.title = @"Puppy Bombs";
+    self.title = @"#grizzlyFlow";
     // TODO: Add a refresh right bar button item
+    
+  //  self.hashtags = @[@"#funnydog", @"#funnycat", @"#hilarious", @"#pranks", @"#crazy", @"#epic"];
+    
+    UIBarButtonItem *hashtagButton = [[UIBarButtonItem alloc] initWithTitle:@"Hashtag" style:UIBarButtonItemStylePlain target:self action:@selector(hashtagSelector)];
+    self.navigationItem.leftBarButtonItem = hashtagButton;
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refresh)];
     self.navigationItem.rightBarButtonItem = refreshButton;
@@ -75,8 +86,12 @@
     }
     self.loading = YES;
     
+//    NSArray *hashtags = [[NSArray alloc] initWithObjects:@"funnytext", @"geekfun", @"funnymeme", @"funnydog", @"funnycat", @"trainstationart", @"below10kfeet", nil];
+    //self.somethingPicker.value = [hashtags objectAtindex:
+    
+    
     NSURLSession *session = [NSURLSession sharedSession];
-    NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/tags/vancouver/media/recent?access_token=%@", self.accessToken];
+    NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/tags/geekfun/media/recent?access_token=%@", self.accessToken];
     NSURL *url = [[NSURL alloc] initWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
@@ -91,6 +106,13 @@
     }];
     [downloadTask resume];
 }
+
+-(void)hashtagSelector
+{
+    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 200.0f, 200.0f)];
+    [self.view addSubview:pickerView];
+}
+
 
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

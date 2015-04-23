@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-AKPickerView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CMDQueryStringSerialization.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0613ACE7A4CC8EA69CB0FEE5</key>
+		<key>147D87C9AA9AF8ADD402A006</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0E3BF219D13D0641CD991E7B</key>
+		<key>3DA627E9C069E48813ECFF16</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>24E697359AA58B4CF382BCAF</key>
+		<key>5A095DD16464F2EE176D41F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>52D61BFDD768668F4FD5E019</key>
+		<key>61825FD519746A6F4467F794</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A0F1F982E61F25FE8C83D3AB</key>
+		<key>6477F190544DCE889A86A8B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BB2C325C7C9BEE58251A5B55</key>
+		<key>BA04A7FDAB06FAC73A71C81F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CC123744358C21533769C602</key>
+		<key>D57345DB8D0212CB882242B6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E4838E53E581C6D9C69CC9A6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

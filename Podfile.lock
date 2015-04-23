@@ -1,4 +1,5 @@
 PODS:
+  - AKPickerView (0.2.4)
   - CMDQueryStringSerialization (0.3.2):
     - ISO8601
   - ISO8601 (0.1.2)
@@ -21,11 +22,13 @@ PODS:
     - SimpleAuth/Core
 
 DEPENDENCIES:
+  - AKPickerView
   - SAMCache
   - SAMCategories
   - SimpleAuth/Instagram
 
 SPEC CHECKSUMS:
+  AKPickerView: e999492a4fff7516d60ede4dc286dd1086871fb3
   CMDQueryStringSerialization: bc824b96c08a3277d00c71504e13c9fa18c6b451
   ISO8601: 92c818ffadac96b0bee76a7ee69dfb617acea197
   ReactiveCocoa: 313fc53cc9aeb2bbbc3f5f13c7eac16478d9af8f

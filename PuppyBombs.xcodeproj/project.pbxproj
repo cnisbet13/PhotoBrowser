@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		963148481AB94CF2009BA9E4 /* HashtagViewPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 963148471AB94CF2009BA9E4 /* HashtagViewPicker.m */; };
 		965D13741AADBED600B371CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 965D13731AADBED600B371CD /* main.m */; };
 		965D13771AADBED600B371CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 965D13761AADBED600B371CD /* AppDelegate.m */; };
 		965D137D1AADBED600B371CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965D137B1AADBED600B371CD /* Main.storyboard */; };
@@ -37,6 +38,8 @@
 /* Begin PBXFileReference section */
 		5E5F34C6C5DE95067A39F97D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7FBDC721241165BC5D3BD37E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		963148461AB94CF2009BA9E4 /* HashtagViewPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashtagViewPicker.h; sourceTree = "<group>"; };
+		963148471AB94CF2009BA9E4 /* HashtagViewPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashtagViewPicker.m; sourceTree = "<group>"; };
 		965D136E1AADBED600B371CD /* PuppyBombs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuppyBombs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		965D13721AADBED600B371CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		965D13731AADBED600B371CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -52,7 +55,7 @@
 		965D13981AADBF0400B371CD /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		965D139A1AADC44200B371CD /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		965D139B1AADC44200B371CD /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
-		965D139E1AADCB3500B371CD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		965D139E1AADCB3500B371CD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		965D13A01AAE556700B371CD /* PhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoController.h; sourceTree = "<group>"; };
 		965D13A11AAE556700B371CD /* PhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoController.m; sourceTree = "<group>"; };
 		965D13A31AAE591300B371CD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -102,9 +105,32 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		963148411AB8208A009BA9E4 /* Photo Controllers/Model */ = {
+			isa = PBXGroup;
+			children = (
+				965D13971AADBF0400B371CD /* PhotoViewController.h */,
+				965D13981AADBF0400B371CD /* PhotoViewController.m */,
+				965D139A1AADC44200B371CD /* PhotoCell.h */,
+				965D139B1AADC44200B371CD /* PhotoCell.m */,
+				965D13A01AAE556700B371CD /* PhotoController.h */,
+				965D13A11AAE556700B371CD /* PhotoController.m */,
+			);
+			name = "Photo Controllers/Model";
+			sourceTree = "<group>";
+		};
+		963148421AB82144009BA9E4 /* Hashtag Picker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Hashtag Picker";
+			sourceTree = "<group>";
+		};
 		965D13651AADBED600B371CD = {
 			isa = PBXGroup;
 			children = (
+				963148461AB94CF2009BA9E4 /* HashtagViewPicker.h */,
+				963148471AB94CF2009BA9E4 /* HashtagViewPicker.m */,
+				963148421AB82144009BA9E4 /* Hashtag Picker */,
 				965D139E1AADCB3500B371CD /* Podfile */,
 				965D13701AADBED600B371CD /* PuppyBombs */,
 				965D138A1AADBED600B371CD /* PuppyBombsTests */,
@@ -130,12 +156,7 @@
 				965D13761AADBED600B371CD /* AppDelegate.m */,
 				965D137B1AADBED600B371CD /* Main.storyboard */,
 				96EAE2981AAFA06800040E7D /* Transition View controllers */,
-				965D13971AADBF0400B371CD /* PhotoViewController.h */,
-				965D13981AADBF0400B371CD /* PhotoViewController.m */,
-				965D139A1AADC44200B371CD /* PhotoCell.h */,
-				965D139B1AADC44200B371CD /* PhotoCell.m */,
-				965D13A01AAE556700B371CD /* PhotoController.h */,
-				965D13A11AAE556700B371CD /* PhotoController.m */,
+				963148411AB8208A009BA9E4 /* Photo Controllers/Model */,
 				965D13A31AAE591300B371CD /* DetailViewController.h */,
 				965D13A41AAE591300B371CD /* DetailViewController.m */,
 				9678BB561AAFB3FA00C40693 /* MetadataView.h */,
@@ -321,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				965D139C1AADC44200B371CD /* PhotoCell.m in Sources */,
+				963148481AB94CF2009BA9E4 /* HashtagViewPicker.m in Sources */,
 				965D13991AADBF0400B371CD /* PhotoViewController.m in Sources */,
 				965D13771AADBED600B371CD /* AppDelegate.m in Sources */,
 				965D13741AADBED600B371CD /* main.m in Sources */,
